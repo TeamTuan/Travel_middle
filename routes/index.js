@@ -24,7 +24,12 @@ router.get('/login', function(req, res, next) {
   request.get('http://127.0.0.1/Travel_hou/user/index?tel='+tel+"&password="+password,function (error, response, body) {
     if (!error && response.statusCode == 200) {
       req.session.id=body;
-      res.json(body);
+      var data={
+        "body":body,
+        "id":req.session.id
+      };
+      console.log(data);
+      res.json(data);
       
     }
   });
