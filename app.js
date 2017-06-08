@@ -16,6 +16,9 @@ app.use(cors({
   methods:['GET','POST'],
   alloweHeaders:['Conten-Type', 'Authorization']
 }));
+
+
+
 app.use(cookieParser('sessiontest'));
 app.use(session({
   secret: 'sessiontest',//与cookieParser中的一致
