@@ -60,7 +60,7 @@ router.get('/get_blog', function(req, res, next) {
 router.get('/save_introduction', function(req, res, next) {
     var id=req.query.id;
     var value=req.query.value;
-    console.log(value);
+
     request.get('http://127.0.0.1/Travel_hou/user/save_introduction?id='+id+'&value='+value, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             res.json(body);
