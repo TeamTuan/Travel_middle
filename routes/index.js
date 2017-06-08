@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var session = require('express-session');
 var request = require('request');
 
 /* GET home page. */
@@ -23,7 +23,9 @@ router.get('/login', function(req, res, next) {
   var password=req.query.password;
   request.get('http://127.0.0.1/Travel_hou/user/index?tel='+tel+"&password="+password,function (error, response, body) {
     if (!error && response.statusCode == 200) {
+      req.session.id=body;
       res.json(body);
+      
     }
   });
 });
@@ -37,9 +39,17 @@ router.get('/user_by_id', function(req, res, next) {
   });
 });
 
+router.get('/check_login', function(req, res, next) {
+ console.log(req.session.id);
+});
 
-
-
+router.get('/get_blog', function(req, res, next) {
+  request.get('http://127.0.0.1/Travel_hou/blog/index', function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      res.json(body);
+    }
+  });
+});
 
 
 

@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors=require("cors");
-
+var session = require('express-session');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -16,7 +16,12 @@ app.use(cors({
   methods:['GET','POST'],
   alloweHeaders:['Conten-Type', 'Authorization']
 }));
-
+app.use(cookieParser('sessiontest'));
+app.use(session({
+  secret: 'sessiontest',//与cookieParser中的一致
+  resave: true,
+  saveUninitialized:true
+}));
 
 
 
