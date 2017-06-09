@@ -52,7 +52,6 @@ router.get('/get_blog', function(req, res, next) {
 
   request.get('http://127.0.0.1/Travel_hou/blog/index', function (error, response, body) {
     if (!error && response.statusCode == 200) {
-    
       res.json(body);
     }
   });
