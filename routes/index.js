@@ -17,7 +17,7 @@ router.post('/first', function(req, res, next) {
     }
   });
 });
-
+//chen
 router.get('/login', function(req, res, next) {
   var tel=req.query.tel;
   var password=req.query.password;
@@ -34,7 +34,7 @@ router.get('/login', function(req, res, next) {
     }
   });
 });
-
+//chen
 router.get('/user_by_id', function(req, res, next) {
   var id=req.query.id;
   request.get('http://127.0.0.1/Travel_hou/user/select_user_by_id?id='+id,function (error, response, body) {
@@ -43,13 +43,12 @@ router.get('/user_by_id', function(req, res, next) {
     }
   });
 });
-
+//chen
 router.get('/check_login', function(req, res, next) {
  console.log(req.session.id);
 });
-
+//ma
 router.get('/get_blog', function(req, res, next) {
-
   request.get('http://127.0.0.1/Travel_hou/blog/index', function (error, response, body) {
     if (!error && response.statusCode == 200) {
       res.json(body);
@@ -57,9 +56,7 @@ router.get('/get_blog', function(req, res, next) {
   });
 
 });
-
-
-
+//chen
 router.get('/save_introduction', function(req, res, next) {
     var id=req.query.id;
     var value=req.query.value;
@@ -72,6 +69,7 @@ router.get('/save_introduction', function(req, res, next) {
     });
 
 });
+//chen
 router.get('/save_name', function(req, res, next) {
     var id=req.query.id;
     var value=req.query.value;
@@ -84,6 +82,7 @@ router.get('/save_name', function(req, res, next) {
     });
 
 });
+//chen
 router.get('/save_sex', function(req, res, next) {
     var id=req.query.id;
     var value=req.query.value;
@@ -98,7 +97,7 @@ router.get('/save_sex', function(req, res, next) {
 });
 
 
-
+//chen
 router.get('/check_tel', function(req, res, next) {
     var value=req.query.value;
     console.log (value);
@@ -112,7 +111,7 @@ router.get('/check_tel', function(req, res, next) {
 });
 
 
-
+//chen
 router.get('/insert_user', function(req, res, next) {
     var tel=req.query.tel;
     var password=req.query.password;
