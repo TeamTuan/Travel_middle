@@ -60,9 +60,34 @@ router.get('/get_blog', function(req, res, next) {
 router.get('/save_introduction', function(req, res, next) {
     var id=req.query.id;
     var value=req.query.value;
-
+    console.log (value);
     request.get('http://127.0.0.1/Travel_hou/user/save_introduction?id='+id+'&value='+value, function (error, response, body) {
         if (!error && response.statusCode == 200) {
+            console.log(body);
+            res.json(body);
+        }
+    });
+
+});
+router.get('/save_name', function(req, res, next) {
+    var id=req.query.id;
+    var value=req.query.value;
+    console.log (value);
+    request.get('http://127.0.0.1/Travel_hou/user/save_name?id='+id+'&value='+value, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+            res.json(body);
+        }
+    });
+
+});
+router.get('/save_sex', function(req, res, next) {
+    var id=req.query.id;
+    var value=req.query.value;
+    console.log (value);
+    request.get('http://127.0.0.1/Travel_hou/user/save_sex?id='+id+'&value='+value, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
             res.json(body);
         }
     });
@@ -71,4 +96,29 @@ router.get('/save_introduction', function(req, res, next) {
 
 
 
+router.get('/check_tel', function(req, res, next) {
+    var value=req.query.value;
+    console.log (value);
+    request.get('http://127.0.0.1/Travel_hou/user/check_tel?value='+value, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+            res.json(body);
+        }
+    });
+
+});
+
+
+
+router.get('/insert_user', function(req, res, next) {
+    var tel=req.query.tel;
+    var password=req.query.password;
+    request.get('http://127.0.0.1/Travel_hou/user/insert_user?tel='+tel+"&password="+password, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+            res.json(body);
+        }
+    });
+
+});
 module.exports = router;
