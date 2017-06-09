@@ -155,7 +155,16 @@ router.get('/publish_blog', function(req, res, next) {
     });
 
 });
+router.get('/publish_scene', function(req, res, next) {
+    var scene_id=req.query.id;
+    request.get('http://127.0.0.1/Travel_hou/scene/publish_scene?id='+scene_id, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+            res.json(body);
+        }
+    });
 
+});
 router.get('/update_blog', function(req, res, next) {
     var login_id=req.query.id;
     var blog_title=req.query.blog_title;
@@ -174,6 +183,17 @@ router.get('/delete_blog', function(req, res, next) {
     var id=req.query.id;
 
     request.get('http://127.0.0.1/Travel_hou/blog/delete_blog?id='+id, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+            res.json(body);
+        }
+    });
+
+});
+router.get('/get_scene_like', function(req, res, next) {
+    var value=req.query.value;
+
+    request.get('http://127.0.0.1/Travel_hou/scene/get_scene_like?value='+value, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             console.log(body);
             res.json(body);
