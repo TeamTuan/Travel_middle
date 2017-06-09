@@ -123,4 +123,62 @@ router.get('/insert_user', function(req, res, next) {
     });
 
 });
+router.get('/travel_notes', function(req, res, next) {
+    var login_id=req.query.login_id;
+    request.get('http://127.0.0.1/Travel_hou/blog/travel?login_id='+login_id, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+            res.json(body);
+        }
+    });
+
+});
+router.get('/save_blog', function(req, res, next) {
+    var login_id=req.query.id;
+    var blog_title= req.query.blog_title;
+    var blog_content = req.query.blog_content;
+    request.get('http://127.0.0.1/Travel_hou/blog/save_blog?id='+login_id+'&blog_title='+blog_title+'&blog_content='+blog_content, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+            res.json(body);
+        }
+    });
+
+});
+router.get('/publish_blog', function(req, res, next) {
+    var login_id=req.query.id;
+    request.get('http://127.0.0.1/Travel_hou/blog/publish_blog?id='+login_id, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+            res.json(body);
+        }
+    });
+
+});
+
+router.get('/update_blog', function(req, res, next) {
+    var login_id=req.query.id;
+    var blog_title=req.query.blog_title;
+    var blog_content=req.query.blog_content;
+
+
+    request.get('http://127.0.0.1/Travel_hou/blog/update_blog?id='+login_id+'&blog_title='+blog_title+'&blog_content='+blog_content, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+            res.json(body);
+        }
+    });
+
+});
+router.get('/delete_blog', function(req, res, next) {
+    var id=req.query.id;
+
+    request.get('http://127.0.0.1/Travel_hou/blog/delete_blog?id='+id, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+            res.json(body);
+        }
+    });
+
+});
 module.exports = router;
