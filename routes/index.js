@@ -60,10 +60,9 @@ router.get('/get_blog', function(req, res, next) {
 router.get('/save_introduction', function(req, res, next) {
     var id=req.query.id;
     var value=req.query.value;
-    console.log (value);
     request.get('http://127.0.0.1/Travel_hou/user/save_introduction?id='+id+'&value='+value, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            console.log(body);
+            // console.log(body);
             res.json(body);
         }
     });
@@ -165,6 +164,27 @@ router.get('/publish_scene', function(req, res, next) {
     });
 
 });
+
+router.get('/select_comment_by_scene_id', function(req, res, next) {
+    var scene_id=req.query.id;
+    request.get('http://127.0.0.1/Travel_hou/scene/select_comment_by_scene_id?id='+scene_id, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+            res.json(body);
+        }
+    });
+});
+
+router.get('/select_reply_by_comment_id', function(req, res, next) {
+    var comment_id=req.query.id;
+    request.get('http://127.0.0.1/Travel_hou/scene/select_reply_by_comment_id?id='+comment_id, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+            res.json(body);
+        }
+    });
+});
+
 router.get('/update_blog', function(req, res, next) {
     var login_id=req.query.id;
     var blog_title=req.query.blog_title;
@@ -201,4 +221,31 @@ router.get('/get_scene_like', function(req, res, next) {
     });
 
 });
+router.get('/select_name_by_id', function(req, res, next) {
+    var from_id=req.query.from_id;
+    var to_id=req.query.to_id;
+    request.get('http://127.0.0.1/Travel_hou/user/select_name_by_id?from_id='+from_id+'&to_id='+to_id, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+            res.json(body);
+        }
+    });
+
+});
+router.get('/insert_comment', function(req, res, next) {
+    var scene_id=req.query.scene_id;
+    var user_id=req.query.user_id;
+    var value=req.query.value;
+    request.get('http://127.0.0.1/Travel_hou/comment/insert_comment?scene_id='+scene_id+'&user_id='+user_id+"&value="+value, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+            res.json(body);
+        }
+    });
+
+});
+
+
+
+
 module.exports = router;
