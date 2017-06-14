@@ -245,8 +245,33 @@ router.get('/insert_comment', function(req, res, next) {
     });
 
 });
+router.get('/insert_reply_comment', function(req, res, next) {
+    var comment_id=req.query.comment_id;
+    var from_id=req.query.from_id;
+    var to_id=req.query.to_id;
+    var value=req.query.value;
+    request.get('http://127.0.0.1/Travel_hou/reply/insert_reply_comment?comment_id='+comment_id+'&from_id='+from_id+"&to_id="+to_id+"&value="+value, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+            res.json(body);
+        }
+    });
 
+});
 
+router.get('/insert_reply_reply', function(req, res, next) {
+    var comment_id=req.query.comment_id;
+    var reply_id=req.query.reply_id;
+    var user_id=req.query.user_id;
+    var to_id=req.query.to_id;
+    var value=req.query.value;
+    request.get('http://127.0.0.1/Travel_hou/reply/insert_reply_reply?comment_id='+comment_id+'&reply_id='+reply_id+"&user_id="+user_id+"&to_id="+to_id+"&value="+value, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+            res.json(body);
+        }
+    });
 
+});
 
 module.exports = router;
